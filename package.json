@@ -1,0 +1,14 @@
+{
+  "name": "electron-with-sql",
+  "version": "1.0.0",
+  "description": "New electron app using sqlite ",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Fabian Narvaez",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^18.0.1"
+  }
+}
