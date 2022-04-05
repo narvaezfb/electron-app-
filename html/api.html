@@ -1,0 +1,20 @@
+<html >
+<head>
+   
+    <title>API</title>
+    <script>
+        const { ipcRenderer } = require("electron");
+
+        document.addEventListener("DOMContentLoaded", ()=>{
+            ipcRenderer.on("recieve-api-data", function(event, data){
+               
+                console.log(data)
+                console.log("hello world")
+            })
+        })
+    </script>
+</head>
+<body>
+    <h1>API PAGE</h1>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<html >
+<head>   
+    <title>Create new user</title>
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+        button{
+            margin-top: 10px;
+        }
+
+        input{
+            margin: 10px;
+        }
+        </style>
+    <script>   
+        const { ipcRenderer } = require('electron');
+       
+        document.addEventListener("DOMContentLoaded", function() {
+            var createNewUserBtn = document.getElementById("createNewUser");
+            if(createNewUserBtn){
+                createNewUserBtn.addEventListener("click", function(event){
+                    event.preventDefault();
+
+                    const userName = document.getElementById("userName").value;
+                    const userEmail = document.getElementById("userEmail").value;
+                    const userPhone = document.getElementById("userPhone").value;
+
+                    const data ={
+                        userName,
+                        userEmail,
+                        userPhone
+                    }
+                    console.log(data)
+                    ipcRenderer.send("recieve-data", data)
+
+                                 
+                })
+            }
+        })  
+    </script>
+</head>
+<body>
+    <form>
+        <div>
+            <label> Enter Name</label>
+            <input type="text" id="userName" autofocus>
+            <br/>
+            <label> Enter Email</label>
+            <input type="text" id="userEmail" autofocus>
+            <br/>
+            <label> Enter Phone</label>
+            <input type="text" id="userPhone" autofocus>
+            <br/>
+            <button id="createNewUser" >Create User</button>
+            <p id="text"></p>
+        </div>
+    </form>
+</body>
+</html>

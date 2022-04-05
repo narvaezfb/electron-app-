@@ -1,0 +1,63 @@
+<html>
+<head>
+    <title>Electron</title>
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+        button{
+            margin-top: 10px;
+        }
+        </style>
+    <script>
+        const { ipcRenderer } = require('electron');
+   
+        document.addEventListener("DOMContentLoaded", function() {
+            ipcRenderer.send("send-data");
+            ipcRenderer.on("resultSent", function(evt, result){
+
+                var usersTable = document.getElementById("usersTable");
+                         
+                console.log(result);
+                for(var i = 0; i < result.length; i++){
+                    var row = usersTable.insertRow(i+1)
+                    var nameField = row.insertCell(0)
+                    var emailField = row.insertCell(1)
+                    var phoneField = row.insertCell(2)
+                    nameField.innerHTML = result[i].name
+                    emailField.innerHTML = result[i].email
+                    phoneField.innerHTML = result[i].phone
+                }      
+            
+            });
+
+           
+        })
+    </script>
+</head>
+<body>
+    <h2>Users Table </h2>
+
+    <table id="usersTable">
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+      </tr>
+     
+    </table>
+ 
+</body>
+</html>
