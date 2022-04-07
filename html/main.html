@@ -22,11 +22,11 @@
         }
         </style>
     <script>
-        const { ipcRenderer } = require('electron');
+        // const { ipcRenderer } = require('electron');
    
         document.addEventListener("DOMContentLoaded", function() {
-            ipcRenderer.send("send-data");
-            ipcRenderer.on("resultSent", function(evt, result){
+            // window.api.send("send-data");
+            window.api.receive("resultSent", function(event, result){
 
                 var usersTable = document.getElementById("usersTable");
                          

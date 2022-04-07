@@ -26,7 +26,7 @@
         }
         </style>
     <script>   
-        const { ipcRenderer } = require('electron');
+        // const { ipcRenderer } = require('electron');
        
         document.addEventListener("DOMContentLoaded", function() {
             var createNewUserBtn = document.getElementById("createNewUser");
@@ -43,13 +43,16 @@
                         userEmail,
                         userPhone
                     }
-                    console.log(data)
-                    ipcRenderer.send("recieve-data", data)
-
+                    console.log(data);
+                   sendDataToServer(data);
                                  
                 })
             }
         })  
+
+        function sendDataToServer (data){
+            window.api.send("recieve-data", data)
+        }
     </script>
 </head>
 <body>
